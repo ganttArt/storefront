@@ -12,9 +12,16 @@ const Categories = props => {
     <Container>
       <h2>Browse Our Products</h2>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link color="inherit" onClick={() => props.reset()}>All</Link>  
-        {props.categories.map(category => {
-          return <Link color="inherit" onClick={() => props.filterByCategory(category.normalizedName)}>{category.displayName}</Link>  
+        <Link color="inherit" onClick={() => props.reset()}>All</Link>
+        {props.products.categories.map(category => {
+          return (
+            <Link
+              color="inherit"
+              onClick={() => props.filterByCategory(category.normalizedName)}
+            >
+              {category.displayName}
+            </Link>
+          )
         })}
       </Breadcrumbs>
     </Container>
@@ -22,9 +29,9 @@ const Categories = props => {
 }
 
 const mapStateToProps = state => ({
-  categories: state.products.categories,
-  reset: reset,
-  filterByCategory: filterByCategory
+  products: state.products,
 })
 
-export default connect(mapStateToProps)(Categories);
+const mapDispatchToProps = { reset, filterByCategory }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);
