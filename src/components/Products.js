@@ -1,15 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import useStyles from '../style/materialUi';
 import { Container } from '@material-ui/core';
+import { reset, filterByCategory } from '../store/products';
 
-const Products = () => {
+const Products = props => {
   const classes = useStyles();
 
   return (
     <Container>
-      hello products
+      <ul>
+        {props.products.map(product => {
+          return <li>{product.name}</li>
+        })}
+      </ul>
     </Container>
   )
 }
 
-export default Products;
+const mapStateToProps = state => ({
+  products: state.products.products,
+})
+
+export default connect(mapStateToProps)(Products);
