@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import useStyles from '../style/materialUi';
 import { Container } from '@material-ui/core';
 
+import Product from './Product';
+
 const Products = props => {
   const classes = useStyles();
 
@@ -10,7 +12,7 @@ const Products = props => {
     <Container>
       <ul>
         {props.products.map(product => {
-          return <li>{product.name}</li>
+            return <Product product={product}/>
         })}
       </ul>
     </Container>
