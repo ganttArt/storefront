@@ -1,10 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { AppBar, Toolbar, Typography, Link } from '@material-ui/core';
 import useStyles from '../style/materialUi';
 
-const Header = () => {
+const Header = props => {
   const classes = useStyles();
-
   return (
     <AppBar position="static" elevation={0} className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
@@ -13,12 +13,16 @@ const Header = () => {
           </Typography>
         <nav>
           <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-            Cart (0)
-            </Link>
+            Cart ({props.cart.length})
+          </Link>
         </nav>
       </Toolbar>
     </AppBar>
   )
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  cart: state.products.cart,
+})
+
+export default connect(mapStateToProps)(Header);

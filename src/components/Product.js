@@ -45,7 +45,7 @@ const Product = props => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Add To Cart</Button>
+        <Button size="small" onClick={() => props.addToCart(props.product)}>Add To Cart</Button>
       </CardActions>
     </Card>
   )
