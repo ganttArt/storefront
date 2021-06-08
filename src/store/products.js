@@ -24,7 +24,8 @@ let initialState = {
   ],
   categories: [
     {
-      displayName: 'Kitchen',normalizedName: 'kitchen',
+      displayName: 'Kitchen',
+      normalizedName: 'kitchen',
       description: 'Kitchen gadgets and cookery'
     },
     {
@@ -33,16 +34,20 @@ let initialState = {
       description: 'Things to use in the bathroom'
     },
   ],
-  activeCategory: 'kitchen'
+  activeCategory: 'all'
 };
 
-export default (state = initialState, action) => {
+const setViewState = (state = initialState, action) => {
   let { type, payload } = action;
+  console.log('in action')
 
   switch (type) {
     case 'FILTER':
-      let filtered = state.filter(product => product.category === payload);
-      return { filtered };
+      let products = state.products.filter(product => product.category === payload);
+      let activeCategory = payload;
+      console.log('filter')
+      console.log(products, activeCategory);
+      return { products, activeCategory };
 
     case 'RESET':
       return initialState;
@@ -64,3 +69,5 @@ export const reset = () => {
     type: 'RESET'
   }
 }
+
+export default setViewState;
