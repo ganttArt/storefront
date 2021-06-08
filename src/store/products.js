@@ -21,7 +21,19 @@ let initialState = {
       price: 30,
       inventoryCount: 300
     }
-  ]
+  ],
+  categories: [
+    {
+      displayName: 'Kitchen',normalizedName: 'kitchen',
+      description: 'Kitchen gadgets and cookery'
+    },
+    {
+      displayName: 'Bath',
+      normalizedName: 'bath',
+      description: 'Things to use in the bathroom'
+    },
+  ],
+  activeCategory: 'kitchen'
 };
 
 export default (state = initialState, action) => {
