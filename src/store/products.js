@@ -39,15 +39,14 @@ let initialState = {
 
 const setViewState = (state = initialState, action) => {
   let { type, payload } = action;
-  console.log('in action')
 
   switch (type) {
     case 'FILTER':
-      let products = state.products.filter(product => product.category === payload);
+      let products = initialState.products.filter(product => product.category === payload);
       let activeCategory = payload;
-      console.log('filter')
-      console.log(products, activeCategory);
-      return { products, activeCategory };
+      let categories = state.categories;
+
+      return { products, activeCategory, categories };
 
     case 'RESET':
       return initialState;
