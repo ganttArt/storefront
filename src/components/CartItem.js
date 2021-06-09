@@ -12,16 +12,8 @@ const useStyles = makeStyles({
     minWidth: 275,
     width: '25%',
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
   title: {
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
   },
 });
 
@@ -33,14 +25,13 @@ const CartItem = props => {
       <CardContent>
         <Typography variant="h5" component="h2">
           {props.product.name}
+          <Typography color="textSecondary">
+            ${props.product.price}
+          </Typography>
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          ${props.product.price}
-        </Typography>
-      </CardContent>
-      <CardActions>
         <Button size="small" onClick={() => alert('Sorry, in development')}>Remove</Button>
-      </CardActions>
+      </CardContent>
+      
     </Card>
   )
 }
