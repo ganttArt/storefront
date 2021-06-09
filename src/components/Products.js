@@ -1,14 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import useStyles from '../style/materialUi';
 import { Container } from '@material-ui/core';
 
 import { addToCart } from '../store/products';
 import Product from './Product';
 
 const Products = props => {
-  const classes = useStyles();
-
   return (
     <Container>
       <ul>

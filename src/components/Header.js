@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { AppBar, Toolbar, Typography, Link } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import useStyles from '../style/materialUi';
+import CartModal from './CartModal';
 
 const Header = props => {
   const classes = useStyles();
@@ -12,9 +13,7 @@ const Header = props => {
           Our Store
           </Typography>
         <nav>
-          <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-            Cart ({props.cart.length})
-          </Link>
+          <CartModal cartSize={props.cart.length}/>
         </nav>
       </Toolbar>
     </AppBar>
