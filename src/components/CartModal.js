@@ -8,6 +8,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Link from '@material-ui/core/Link';
 
+import CartItem from './CartItem';
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -93,8 +95,9 @@ const SpringModal = props => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="spring-modal-title">Spring modal</h2>
-            <p id="spring-modal-description">react-spring animates me.</p>
+            {props.cart.map(product => {
+              return <CartItem product={product}/>
+            })}
           </div>
         </Fade>
       </Modal>
