@@ -1,23 +1,39 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import useStyles from '../style/materialUi';
+import React, { useEffect } from 'react';
+
 import { Container, Breadcrumbs, Link } from '@material-ui/core';
 
+import { connect } from 'react-redux';
 import { reset, filterByCategory } from '../store/products';
+import * as actions from '../store/actions';
 
 const Categories = props => {
-  const classes = useStyles();
+
+  const fetchData = (e) => {
+    e && e.preventDefault();
+    props.get();
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  console.log('category data in component', props.data);
 
   return (
     <Container>
       <h2>Browse Our Products</h2>
       <Breadcrumbs aria-label="breadcrumb">
         <Link color="inherit" onClick={() => props.reset()}>All</Link>
-        {props.products.categories.map(category => {
+        {props.data.results.map(category => {
           return (
             <Link
               color="inherit"
-              onClick={() => props.filterByCategory(category.normalizedName)}
+              onClick={() => {
+                console.log('click, name', category.normalizedName);
+                console.log('props filter', props.filterByCategory);
+                return props.filterByCategory(category.normalizedName)
+                }
+              }
             >
               {category.displayName}
             </Link>
@@ -30,8 +46,13 @@ const Categories = props => {
 
 const mapStateToProps = state => ({
   products: state.products,
+  data: state.data
 })
 
-const mapDispatchToProps = { reset, filterByCategory }
+const mapDispatchToProps = (dispatch, getState) => ({
+  reset,
+  filterByCategory,
+  get: () => dispatch(actions.getRemoteData())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
