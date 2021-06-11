@@ -14,7 +14,7 @@ const Header = props => {
           Our Store
           </Typography>
         <nav>
-          <CartModal cartSize={props.cart.length}/>
+          <CartModal/>
         </nav>
       </Toolbar>
     </AppBar>

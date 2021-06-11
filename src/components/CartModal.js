@@ -107,7 +107,7 @@ const SpringModal = props => {
 }
 
 const mapStateToProps = state => ({
-  cart: state.products.cart,
+  cart: state.cart.cart,
 })
 
 export default connect(mapStateToProps)(SpringModal);
