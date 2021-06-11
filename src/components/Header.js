@@ -6,6 +6,7 @@ import CartModal from './CartModal';
 
 const Header = props => {
   const classes = useStyles();
+
   return (
     <AppBar position="static" elevation={0} className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
@@ -21,7 +22,7 @@ const Header = props => {
 }
 
 const mapStateToProps = state => ({
-  cart: state.products.cart,
+  cart: state.cart.cart,
 })
 
 export default connect(mapStateToProps)(Header);
