@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 let initialState = {
   products: [
     {
@@ -22,35 +23,12 @@ let initialState = {
       inventoryCount: 300
     }
   ],
-  categories: [
-    {
-      displayName: 'Kitchen',
-      normalizedName: 'kitchen',
-      description: 'Kitchen gadgets and cookery'
-    },
-    {
-      displayName: 'Bath',
-      normalizedName: 'bath',
-      description: 'Things to use in the bathroom'
-    },
-  ],
-  activeCategory: 'all',
-  cart: [],
 };
 
-const setViewState = (state = initialState, action) => {
+export default (state = initialState, action) => {
   let { type, payload } = action;
-  console.log('in action');
 
   switch (type) {
-    case 'ADD_TO_CART':
-      return {
-        products: state.products,
-        activeCategory: state.activeCategory,
-        categories: state.categories,
-        cart: [...state.cart, payload]
-      }
-
     case 'FILTER':
       let products = initialState.products.filter(product => product.category === payload);
 
@@ -64,20 +42,10 @@ const setViewState = (state = initialState, action) => {
     case 'RESET':
       return {
         products: initialState.products,
-        activeCategory: initialState.activeCategory,
-        categories: initialState.categories,
-        cart: state.cart
       };
 
     default:
       return state;
-  }
-}
-
-export const addToCart = (product) => {
-  return {
-    type: 'ADD_TO_CART',
-    payload: product
   }
 }
 
@@ -93,5 +61,3 @@ export const reset = () => {
     type: 'RESET'
   }
 }
-
-export default setViewState;

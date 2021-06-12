@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
 
-import { addToCart } from '../store/products';
+import { addToCart } from '../store/cart';
 import Product from './Product';
 
 const Products = props => {
