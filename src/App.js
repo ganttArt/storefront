@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Categories from './components/Categories';
 import Products from './components/Products';
 import Footer from './components/Footer';
+import ShoppingCart from './components/ShoppingCart';
 
 function App() {
   return (
@@ -16,14 +17,14 @@ function App() {
             <Products />
           </Route>
           <Route path="/cart">
-            <h1>Cart</h1>
+            <ShoppingCart />
           </Route>
           <Route path="/productDetail">
             <h1>Product Detail</h1>
           </Route>
         </Switch>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
