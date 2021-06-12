@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Breadcrumbs, Link } from '@material-ui/core';
 
-import { reset, filterByCategory } from '../store/products';
+import { filterByCategory, getAllProducts } from '../store/products';
 
 const Categories = props => {
 
@@ -10,7 +10,7 @@ const Categories = props => {
     <Container>
       <h2>Browse Our Products</h2>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link color="inherit" onClick={() => props.reset()}>All</Link>
+        <Link color="inherit" onClick={() => props.getAllProducts()}>All</Link>
         {props.categories.map(category => {
           return (
             <Link
@@ -31,6 +31,6 @@ const mapStateToProps = state => ({
   categories: state.categories.categories
 })
 
-const mapDispatchToProps = { reset, filterByCategory };
+const mapDispatchToProps = { getAllProducts, filterByCategory };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
